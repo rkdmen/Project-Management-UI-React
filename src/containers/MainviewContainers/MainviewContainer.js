@@ -12,6 +12,7 @@ export class MainviewContainer extends Component {
     this.viewAllFilter = this.viewAllFilter.bind(this);
     this.activeFilter = this.activeFilter.bind(this);
     this.inactiveFilter = this.inactiveFilter.bind(this);
+    this.newProject = this.newProject.bind(this);
    }
 
   toggleActiveClass(e){
@@ -33,7 +34,9 @@ export class MainviewContainer extends Component {
 
   }
 
+  newProject(e){
 
+  }
 
   render() {
       return (
@@ -41,11 +44,11 @@ export class MainviewContainer extends Component {
           <div className='table-nav'>
             <p className='project-title'>Projects Index</p>
               <div className='btn-group'>
-                <div ref='active' onClick={this.viewAllFilter} className='active btn'>View All</div>
-                <div ref='active' onClick={this.activeFilter} className='btn'>Active</div>
-                <div ref='active' onClick={this.inactiveFilter} className='btn'>Inactive</div>
+                <div onClick={this.viewAllFilter} className='active btn'>View All</div>
+                <div onClick={this.activeFilter} className='btn'>Active</div>
+                <div onClick={this.inactiveFilter} className='btn'>Inactive</div>
               </div>
-
+            <div onClick={this.newProject} className='btn btn-newProject'>New Project</div>
           </div>
         </div>
       );
