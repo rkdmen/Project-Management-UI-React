@@ -6,6 +6,38 @@
 }
 
 .project-title {
-  font-size: 15px;
+  font-size: 1.3em;
+  font-weight:400;
   display: inline-block;
+}
+
+.btn {
+  padding:8px;
+  font-size: 16px;
+  font-weight:400;
+  border: thin grey solid;
+  height:40px;
+  width:100px;
+  border-radius:5px !important;
+  color:grey;
+  margin-right:15px;
+  text-align:center;
+
+  &:hover, &:active{
+    transition:all 0.3s ease-in-out;
+    background-color:#248AC2;
+    color:white;
+  }
+
+}
+
+.active {
+  background-color:#248AC2;
+  color:white;
+}
+
+
+.btn-group {
+  left:25%;
+  margin:20px;
 }
