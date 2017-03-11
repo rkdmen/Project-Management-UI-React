@@ -22,6 +22,12 @@ app.use(logger('dev'));
 app.use(cookieParser());
 
 
+//API Routes
+
+let dataRoutes = require('./routes/routes');
+app.use('/api', dataRoutes);
+
+
 // webpack loads index.html, looks for script src
 app.get('/build/bundle.js', function(req, res){
   res.sendFile(path.join(__dirname, '../build/bundle.js'));
