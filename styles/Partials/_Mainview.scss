@@ -6,7 +6,7 @@
   border: thin solid $lightGrey;
   @include flexCenter();
   .lineBreak {
-    border-top: 1px orange solid;
+    border-top: 1px $wmOrange solid;
     width: 100%;
     height:5px;
   }

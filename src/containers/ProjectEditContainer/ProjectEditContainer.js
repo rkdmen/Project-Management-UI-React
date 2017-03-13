@@ -23,7 +23,18 @@ export class ProjectEditContainer extends Component {
 
   componentWillMount(){
     this.props.getDetail(this.props.params.id)
-     document.addEventListener("keydown", this.handleKeyDown);
+    document.addEventListener("keydown", this.handleKeyDown);
+    /* Below console.error removes Warning:
+      A component is contentEditable and contains children managed by React.
+    */
+    console.error = (function() {
+      let error = console.error
+      return function(exception) {
+        if ((exception + '').indexOf('Warning: A component is `contentEditable`')){
+          error.apply(console, arguments);
+        }
+      }
+    })();
   }
 
   handleEditContent(){
@@ -35,16 +46,28 @@ export class ProjectEditContainer extends Component {
   handleClick(e){
   }
 
+  collapseDetail(e){
+    let idx = e.target.dataset.value === 'project' ? 0 : 1;
+    let desc = document.getElementsByClassName('descContent');
+    let img = document.getElementsByClassName('minus-plus');
+    if(desc[idx].style.display === 'none'){
+      desc[idx].style.display = 'block';
+      img[idx].src = Minus;
+      return;
+    }
+    desc[idx].style.display = 'none';
+    img[idx].src = Plus;
+  }
+
+
   handleKeyDown(e) {
     let ESCAPE_KEY = 27;
     if (e.keyCode === ESCAPE_KEY) {
-      console.log('esc!!!!!!')
-      browserHistory.push(`/`);
+      browserHistory.push('/');
     }
   }
 
    componentWillUnmount() {
-      console.log('removing event')
       document.removeEventListener("keydown", this.handleKeyDown);
    }
 
@@ -55,10 +78,20 @@ export class ProjectEditContainer extends Component {
       <div onKeyDown={this.handleKeyDown}  className='project-container container'>
         <div className="project-detail-header">
           <p>{this.props.project.name}</p>
-          <p>Project Details &nbsp;<img className="minus-svg" width="25" src={Minus} /></p>
+          <p><img onClick={this.collapseDetail} data-value='project' className="minus-plus" width="22" src={Minus} /> &nbsp;Project Details</p>
         </div>
-          <div className={this.state.contentEdit?'editing':'edit'} contentEditable={this.state.contentEdit}>{this.props.project.description}</div>
-          <Button bsStyle="primary" onClick={this.handleEditContent}>{this.state.btnTxt}</Button>
+          <div className={this.state.contentEdit?'editing descContent':'edit descContent'} contentEditable={this.state.contentEdit}>{this.props.project.description}</div>
+          <Button bsStyle="primary" className="pull-right" onClick={this.handleEditContent}>{this.state.btnTxt}</Button>
+          <div>
+            <p><img onClick={this.collapseDetail} className="minus-plus" width="22" src={Minus} />&nbsp;Project Owner</p>
+            <div className='descContent'>
+              <p><img src={this.props.project.owner.image} data-value='ownerDetail' className="profile-pic" alt="owner-image"/>{this.props.project.owner.name}</p>
+              <div className="overLay-progressBar" style={{height:'24px',width:'25%'}}>
+                <div className="inner-progressBar" style={{height:'24px',width:'25%'}}></div>
+              </div>
+              <div className="steps">{this.props.project.current_step}&nbsp;/&nbsp;{this.props.project.total_steps}</div>
+            </div>
+          </div>
       </div>
     );
   }

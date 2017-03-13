@@ -2,8 +2,10 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import MainviewRows from '../../components/Mainview/MainviewRows';
+import NewProjectModalContainer from '../NewProjectContainer/NewProjectModalContainer';
 import { getList } from '../../actions/projectActions';
 import { filterViewAll, filterActive, filterInctive } from '../../actions/sortActions';
+import { Button, Modal } from 'react-bootstrap';
 
 export class MainviewContainer extends Component {
   constructor(props) {
@@ -13,7 +15,6 @@ export class MainviewContainer extends Component {
     this.viewAllFilter = this.viewAllFilter.bind(this);
     this.activeFilter = this.activeFilter.bind(this);
     this.inactiveFilter = this.inactiveFilter.bind(this);
-    this.newProject = this.newProject.bind(this);
    }
 
   componentWillMount() {
@@ -42,10 +43,6 @@ export class MainviewContainer extends Component {
     this.props.filterInctive();
   }
 
-  newProject(e){
-
-  }
-
   render() {
     console.log(this.props, ' props in container')
     return (
@@ -57,7 +54,7 @@ export class MainviewContainer extends Component {
               <div onClick={this.activeFilter} className='btn'>Active</div>
               <div onClick={this.inactiveFilter} className='btn'>Inactive</div>
             </div>
-          <div onClick={this.newProject} className='btn btn-newProject'>New Project</div>
+          <NewProjectModalContainer />
         </div>
         <div className='lineBreak'></div>
         <MainviewRows

@@ -6,11 +6,22 @@ table {
   left:0;
   top:0;
   }
+  thead {
+    background-color: #727778;
+    color: white;
+    p {
+      padding:10px 0px 10px 0px;
+      margin: 0 auto;
+      display:flex;
+      font-weight:400 !important;
+    }
+  }
+
   thead th {
     width:auto !important;
     border-left:1px solid #B8BDC6;
     &:nth-child(4) {
-      width:15% !important;
+      width:20% !important;
     }
     &:last-child {
       width:10% !important;
@@ -20,25 +31,55 @@ table {
       background-color:#B8BDC6;
     }
   }
+
   tbody tr {
     &:hover {
       background-color:#B8BDC6;
       font-weight: 600;
     }
+  }
 
+  .projectName {
+    color:$skyBlue;
+    cursor: pointer;
+  }
+
+  .projectOwner {
+    color: grey;
+  }
+
+  .projectDue {
+    color: grey;
+  }
+
+  .currentStep-tr {
+    float:left;
+    left:0;
+    width:20px;
+    text-align:right;
+  }
+
+  .totalStep-tr {
+    float:right;
+    right:0;
+    text-align:right;
+  }
+  .overLay-progressBar {
+    height:17px;
+    @media #{$mq-xs, $mq-sm}{
+      height:13px;
+      width:60%;
+    }
+    width:75%;
+  }
+  .inner-progressBar {
+    height:17px;
+    @media #{$mq-xs, $mq-sm}{
+      height:13px;
+    }
   }
 }
 
-thead {
-  background-color: #727778;
-  color: white;
-  p {
-    padding:10px 0px 10px 0px;
-    margin: 0 auto;
-    display:flex;
-    font-weight:400 !important;
-  }
-}
 
 .circleGreen {
   @include activeCircle($greenActive);
@@ -46,17 +87,4 @@ thead {
 
 .circleGray {
   @include activeCircle($lightGrey);
-}
-
-.projectName {
-  color:$skyBlue;
-  cursor: pointer;
-}
-
-.projectOwner {
-  color: grey;
-}
-
-.projectDue {
-  color: grey;
 }
