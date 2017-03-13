@@ -1,0 +1,19 @@
+.project-container {
+  position:relative;
+  margin-top:5%;
+  background-color: white;
+  border-radius: 4px;
+  border: thin solid $lightGrey;
+
+  }
+
+.edit {
+  // border-radius: 2px;
+  // border: thin solid $lightGrey;
+}
+
+.editing {
+  background-color:#E2E9F6;
+  border-radius: 2px;
+  border: thin solid $lightGrey;
+}

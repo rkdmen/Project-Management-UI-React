@@ -9,7 +9,7 @@ import ReactDOM from 'react-dom';
 import { createStore, applyMiddleware, combineReducers } from 'redux';
 import { Provider } from 'react-redux'
 import promise from 'redux-promise';
-import { Router, hashHistory } from 'react-router'
+import { Router, browserHistory } from 'react-router'
 import { syncHistoryWithStore, routerReducer } from 'react-router-redux'
 
 //Routes
@@ -26,7 +26,7 @@ const Store = createStore(
 );
 
 // Create an enhanced history that syncs navigation events with the store
-const history = syncHistoryWithStore(hashHistory, Store);
+const history = syncHistoryWithStore(browserHistory, Store);
 
 
 ReactDOM.render(

@@ -1,0 +1,68 @@
+import React, { Component, PropTypes } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { sortByDateAction } from '../../actions/sortActions';
+
+export class MainviewColumn extends Component {
+  constructor(props) {
+    super(props);
+    this.sortByName = this.sortByName.bind(this);
+    this.sortByOwner = this.sortByOwner.bind(this);
+    this.sortByDate = this.sortByDate.bind(this);
+    this.sortBySteps = this.sortBySteps.bind(this);
+    this.sortByActive = this.sortByActive.bind(this);
+
+    this.state = {
+      defaultSortName:'asc',
+      defaultSortOwner:'asc',
+      defaultSortDate:'asc',
+      defaultSortStep:'asc',
+      defaultSortActive:'asc'
+    }
+  }
+
+  sortByName(e){
+  }
+
+  sortByOwner(e){
+    console.log(this.props.projects.projectData, ' sort by owner')
+  }
+
+  sortByDate(e){
+      this.props.sortByDateAction(this.state.defaultSortDate === 'asc'?'desc':'asc')
+      this.setState({defaultSortDate: this.state.defaultSortDate === 'asc'?'desc':'asc'})
+  }
+
+  sortBySteps(e){
+
+  }
+
+  sortByActive(e){
+
+  }
+
+  render() {
+    console.log(this.props, ': props in column.');
+      return (
+            <thead>
+              <tr>
+                <th onClick={this.sortByName}><p>Project Name</p></th>
+                <th onClick={this.sortByOwner}><p>Owner:</p></th>
+                <th onClick={this.sortByDate}><p>Due:</p></th>
+                <th onClick={this.sortBySteps}><p>Steps</p></th>
+                <th onClick={this.sortByActive}><p>Active:</p></th>
+              </tr>
+            </thead>
+        );
+  }
+}
+
+// MainviewColumn.propTypes = {
+// }
+
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ sortByDateAction }, dispatch);
+}
+
+export default connect(null, mapDispatchToProps )(MainviewColumn);

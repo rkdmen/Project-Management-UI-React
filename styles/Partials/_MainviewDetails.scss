@@ -1,0 +1,62 @@
+table {
+  width:100%;
+  table-layout:fixed;
+  word-wrap: break-word;
+  @media #{$mq-xs, $mq-sm}{
+  left:0;
+  top:0;
+  }
+  thead th {
+    width:auto !important;
+    border-left:1px solid #B8BDC6;
+    &:nth-child(4) {
+      width:15% !important;
+    }
+    &:last-child {
+      width:10% !important;
+    }
+    &:hover {
+      cursor: pointer;
+      background-color:#B8BDC6;
+    }
+  }
+  tbody tr {
+    &:hover {
+      background-color:#B8BDC6;
+      font-weight: 600;
+    }
+
+  }
+}
+
+thead {
+  background-color: #727778;
+  color: white;
+  p {
+    padding:10px 0px 10px 0px;
+    margin: 0 auto;
+    display:flex;
+    font-weight:400 !important;
+  }
+}
+
+.circleGreen {
+  @include activeCircle($greenActive);
+}
+
+.circleGray {
+  @include activeCircle($lightGrey);
+}
+
+.projectName {
+  color:$skyBlue;
+  cursor: pointer;
+}
+
+.projectOwner {
+  color: grey;
+}
+
+.projectDue {
+  color: grey;
+}

@@ -43,10 +43,15 @@ module.exports = {
         test: /\.scss$/,
         loaders: ['style', 'css', 'sass']
       },
-      { test: /\.png$/,
-        loader: 'file' },
-      { test: /\.(ttf|eot|svg|woff(2)?)(\?[a-z0-9]+)?$/,
-        loader: 'file'}
+      {
+        test: /\.(jpg|png|svg)$/, //Load img/svg
+        loader: 'url-loader',
+        options: {
+          limit: 25000
+        }
+      },
+      { test: /\.(ttf|eot|woff(2)?)(\?[a-z0-9]+)?$/,
+        loader: 'file' }
     ]
   }
 }

@@ -26,6 +26,7 @@ app.use(cookieParser());
 
 let dataRoutes = require('./routes/routes');
 app.use('/api', dataRoutes);
+app.use('/project/api', dataRoutes);
 
 
 // webpack loads index.html, looks for script src

@@ -3,17 +3,23 @@ let express = require('express');
 let router = express.Router();
 let request = require('request');
 let fs = require('fs');
+let JSONData = JSON.parse(fs.readFileSync('./data/challenge.json', 'utf8'));
 
 router.post('/projectData', (req, res) => {
-  let JSONData = JSON.parse(fs.readFileSync('../../data/challenge.json', 'utf8'));
 });
 
 router.get('/projectData', (req, res) => {
-  let JSONData = JSON.parse(fs.readFileSync('../../data/challenge.json', 'utf8'));
   res.send(JSONData);
 });
 
-router.delete('/projectData/:symb', (req, res) => {
+router.get('/projectData/:id', (req, res) => {
+  let id = Number(req.params.id);
+  let project = JSONData.projects.filter((project)=> {
+    return project.id === id} )
+  res.send(project);
+});
+
+router.delete('/projectData/:id', (req, res) => {
   //Delete user clicked symbol.
   // let JSONData = JSON.parse(fs.readFileSync('../../data/challenge.json', 'utf8'));
 

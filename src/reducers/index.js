@@ -1,9 +1,10 @@
 import { combineReducers } from 'redux';
-import { sample_reducer } from './name_Reducer';
-
+import { projectData_Reducer } from './projectData_Reducer';
+import { projectDetail_Reducer } from './projectDetail_Reducer';
 
 const rootReducer = combineReducers({
-  testing: sample_reducer
+  projectDatas: projectData_Reducer,
+  projectDetail: projectDetail_Reducer
 });
 
 export default rootReducer;
