@@ -3,10 +3,12 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { getDetail } from '../../actions/projectActions';
 import { Button } from 'react-bootstrap';
+import { browserHistory } from 'react-router';
 import Minus from '../../../assets/images/minus.svg';
 import Plus from '../../../assets/images/plus.svg';
 import RightArrow from '../../../assets/images/right-arrow.svg';
 import LeftArrow from '../../../assets/images/left-arrow.svg';
+
 
 export class ProjectEditContainer extends Component {
   constructor(props) {
@@ -16,9 +18,12 @@ export class ProjectEditContainer extends Component {
       btnTxt:'Edit'
     }
     this.handleEditContent = this.handleEditContent.bind(this);
+    this.handleKeyDown = this.handleKeyDown.bind(this);
    }
+
   componentWillMount(){
     this.props.getDetail(this.props.params.id)
+     document.addEventListener("keydown", this.handleKeyDown);
   }
 
   handleEditContent(){
@@ -27,11 +32,27 @@ export class ProjectEditContainer extends Component {
 
   }
 
+  handleClick(e){
+  }
+
+  handleKeyDown(e) {
+    let ESCAPE_KEY = 27;
+    if (e.keyCode === ESCAPE_KEY) {
+      console.log('esc!!!!!!')
+      browserHistory.push(`/`);
+    }
+  }
+
+   componentWillUnmount() {
+      console.log('removing event')
+      document.removeEventListener("keydown", this.handleKeyDown);
+   }
+
   render() {
     console.log(this.props.project, ' prop')
     return (
       !this.props.project?(<div>Loading...</div>):
-      <div className='project-container container'>
+      <div onKeyDown={this.handleKeyDown}  className='project-container container'>
         <div className="project-detail-header">
           <p>{this.props.project.name}</p>
           <p>Project Details &nbsp;<img className="minus-svg" width="25" src={Minus} /></p>
