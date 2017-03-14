@@ -19,8 +19,7 @@
     .owner-name {
       color:$skyBlue;
       font-size:16px;
-}
-
+    }
   }
 
 .project-detail-header {
@@ -44,14 +43,22 @@
   border-radius:7px;
 }
 
-.minus-plus {
+.minus-plus, .left-arrow, .right-arrow {
   &:hover {
-    opacity: .8;
+    opacity: .7;
     cursor: pointer;
   }
 }
-
-
+.left-arrow {
+  position: fixed;
+  top:40%;
+  left:1%;
+}
+.right-arrow {
+  position: fixed;
+  top:40%;
+  right:1%;
+}
 .overLay-progressBar {
  @include overLay-progress;
 }
