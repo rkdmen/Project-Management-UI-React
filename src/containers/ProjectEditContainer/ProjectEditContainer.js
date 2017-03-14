@@ -72,7 +72,6 @@ export class ProjectEditContainer extends Component {
    }
 
   render() {
-    console.log(this.props.project, ' prop')
     return (
       !this.props.project?(<div>Loading...</div>):
       <div onKeyDown={this.handleKeyDown}  className='project-container container'>
@@ -89,7 +88,7 @@ export class ProjectEditContainer extends Component {
               <div className="overLay-progressBar" style={{height:'24px',width:'25%'}}>
                 <div className="inner-progressBar" style={{height:'24px',width:'25%'}}></div>
               </div>
-              <div className="steps">{this.props.project.current_step}&nbsp;/&nbsp;{this.props.project.total_steps}</div>
+              <div className="steps"><span className={this.props.project.active?'greenActiveText':''}>{this.props.project.current_step}</span>&nbsp;/&nbsp;{this.props.project.total_steps}</div>
             </div>
           </div>
       </div>

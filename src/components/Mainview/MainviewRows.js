@@ -23,18 +23,17 @@ class MainviewRows extends Component {
                 !this.props.projects.projectData?<tr><td><p>Loading...</p></td></tr>:
                 this.props.projects.projectData.map((project)=>{
                   let progressPercent = Math.abs(project.current_step/project.total_steps)*100
-                  console.log(progressPercent, '%')
                   return (
                     <tr key={project.id}>
                       <td><p onClick={this.handleClick} data-value={project.id} className='projectName'>{project.name}</p></td>
                       <td><p className='projectOwner'>{project.owner.name}</p></td>
                       <td><p className='projectDue'>{unixConverter(project.end_date)}</p></td>
                       <td>
-                      <div className='currentStep-tr'>{project.current_step}&nbsp;</div>
+                      <div className='totalStep-tr'>{project.total_steps}&nbsp;</div>
                       <div className="overLay-progressBar" >
                           <div className="inner-progressBar" style={{width:`${progressPercent}%`}}></div>
                         </div>
-                        <div className='totalStep-tr'>{project.total_steps}</div>
+                        <div  className={project.active?'greenActiveText currentStep-tr':'currentStep-tr'}>{project.current_step} </div>
                       </td>
                       <td><p className={project.active?'circleGreen':'circleGray'}></p></td>
                     </tr>

@@ -4,8 +4,7 @@ import { bindActionCreators } from 'redux';
 import MainviewRows from '../../components/Mainview/MainviewRows';
 import NewProjectModalContainer from '../NewProjectContainer/NewProjectModalContainer';
 import { getList } from '../../actions/projectActions';
-import { filterViewAll, filterActive, filterInctive } from '../../actions/sortActions';
-import { Button, Modal } from 'react-bootstrap';
+import { filterViewAllAction, filterActiveAction, filterInctiveAction } from '../../actions/sortActions';
 
 export class MainviewContainer extends Component {
   constructor(props) {
@@ -29,22 +28,21 @@ export class MainviewContainer extends Component {
 
   viewAllFilter(e){
     this.toggleActiveClass(e);
-    this.props.filterViewAll();
+    this.props.filterViewAllAction();
 
   }
 
   activeFilter(e){
     this.toggleActiveClass(e);
-    this.props.filterActive();
+    this.props.filterActiveAction();
   }
 
   inactiveFilter(e){
     this.toggleActiveClass(e);
-    this.props.filterInctive();
+    this.props.filterInctiveAction();
   }
 
   render() {
-    console.log(this.props, ' props in container')
     return (
       <div className='table-container container'>
         <div className='table-nav'>
@@ -75,7 +73,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ getList, filterViewAll, filterActive, filterInctive }, dispatch);
+  return bindActionCreators({ getList, filterViewAllAction, filterActiveAction, filterInctiveAction }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps )(MainviewContainer);

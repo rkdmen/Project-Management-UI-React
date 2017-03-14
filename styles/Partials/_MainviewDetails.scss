@@ -52,7 +52,7 @@ table {
     color: grey;
   }
 
-  .currentStep-tr {
+  .totalStep-tr {
     float:left;
     left:0;
     width:20px;
@@ -62,7 +62,7 @@ table {
     }
   }
 
-  .totalStep-tr {
+  .currentStep-tr {
     float:right;
     right:0;
     text-align:right;
@@ -87,11 +87,18 @@ table {
   }
 }
 
+.greenActiveText {
+  color: $greenActiveText;
+}
 
 .circleGreen {
   @include activeCircle($greenActive);
+  border: thin solid #719774;
+  box-shadow: inset 0 0 1px 0px #799E7B;
+
 }
 
 .circleGray {
   @include activeCircle($lightGrey);
+  border: 1px solid #D4D4D4;
 }

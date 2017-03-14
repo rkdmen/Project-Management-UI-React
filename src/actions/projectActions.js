@@ -4,7 +4,6 @@ import * as type from '../constants/ActionTypes';
 
 
 export function getList(){
-  console.log('get list')
   const request = axios.get('api/projectData/');
     return {
       type: type.GET_DATA,

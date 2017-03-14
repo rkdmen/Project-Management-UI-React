@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { sortByDateAction } from '../../actions/sortActions';
+import { sortByDateAction, sortByNameAction, sortByOwnerAction, sortByStepsAction, sortByActiveAction } from '../../actions/sortActions';
 
 export class MainviewColumn extends Component {
   constructor(props) {
@@ -22,27 +22,31 @@ export class MainviewColumn extends Component {
   }
 
   sortByName(e){
+    this.props.sortByNameAction(this.state.defaultSortName === 'asc'?'desc':'asc')
+    this.setState({defaultSortName: this.state.defaultSortName === 'asc'?'desc':'asc'})
   }
 
   sortByOwner(e){
-    console.log(this.props.projects.projectData, ' sort by owner')
+    this.props.sortByOwnerAction(this.state.defaultSortOwner === 'asc'?'desc':'asc')
+    this.setState({defaultSortOwner: this.state.defaultSortOwner === 'asc'?'desc':'asc'})
   }
 
   sortByDate(e){
-      this.props.sortByDateAction(this.state.defaultSortDate === 'asc'?'desc':'asc')
-      this.setState({defaultSortDate: this.state.defaultSortDate === 'asc'?'desc':'asc'})
+    this.props.sortByDateAction(this.state.defaultSortDate === 'asc'?'desc':'asc')
+    this.setState({defaultSortDate: this.state.defaultSortDate === 'asc'?'desc':'asc'})
   }
 
   sortBySteps(e){
-
+    this.props.sortByStepsAction(this.state.defaultSortStep === 'asc'?'desc':'asc')
+    this.setState({defaultSortStep: this.state.defaultSortStep === 'asc'?'desc':'asc'})
   }
 
   sortByActive(e){
-
+    this.props.sortByActiveAction(this.state.defaultSortActive === 'asc'?'desc':'asc')
+    this.setState({defaultSortActive: this.state.defaultSortActive === 'asc'?'desc':'asc'})
   }
 
   render() {
-    console.log(this.props, ': props in column.');
       return (
             <thead>
               <tr>
@@ -62,7 +66,7 @@ export class MainviewColumn extends Component {
 
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ sortByDateAction }, dispatch);
+  return bindActionCreators({ sortByDateAction, sortByNameAction, sortByOwnerAction, sortByStepsAction, sortByActiveAction }, dispatch);
 }
 
 export default connect(null, mapDispatchToProps )(MainviewColumn);

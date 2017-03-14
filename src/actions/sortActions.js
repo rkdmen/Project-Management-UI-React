@@ -1,7 +1,7 @@
 import * as type from '../constants/ActionTypes';
 import axios from 'axios';
 
-export function filterViewAll(){
+export function filterViewAllAction(){
   const request = axios.get('api/projectData/');
     return {
       type: type.VIEW_ALL,
@@ -9,7 +9,7 @@ export function filterViewAll(){
     }
 }
 
-export function filterActive(){
+export function filterActiveAction(){
   const request = axios.get('api/projectData/');
     return {
       type: type.VIEW_ACTIVE,
@@ -17,7 +17,7 @@ export function filterActive(){
     }
 }
 
-export function filterInctive(){
+export function filterInctiveAction(){
   const request = axios.get('api/projectData/');
     return {
       type: type.VIEW_INACTIVE,
@@ -32,3 +32,30 @@ export function sortByDateAction(sortBy){
     }
 }
 
+export function sortByNameAction(sortBy){
+    return {
+      type: type.SORT_BY_NAME,
+      payload:sortBy
+    }
+}
+
+export function sortByOwnerAction(sortBy){
+    return {
+      type: type.SORT_BY_OWNER,
+      payload:sortBy
+    }
+}
+
+export function sortByStepsAction(sortBy){
+    return {
+      type: type.SORT_BY_STEPS,
+      payload:sortBy
+    }
+}
+
+export function sortByActiveAction(sortBy){
+    return {
+      type: type.SORT_BY_ACTIVE,
+      payload:sortBy
+    }
+}
