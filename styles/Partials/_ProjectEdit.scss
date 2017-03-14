@@ -1,13 +1,26 @@
 .project-container {
   position:relative;
-  margin-top:5%;
+  margin:0 auto;
+  top: 40px;
+  width: 85%;
   background-color: white;
   border-radius: 4px;
   border: thin solid $lightGrey;
   .steps {
     float:left;
-
+    font-size:17px;
     }
+
+    p {
+      font-size:17px;
+      font-weight:400;
+      color:grey;
+    }
+    .owner-name {
+      color:$skyBlue;
+      font-size:16px;
+}
+
   }
 
 .project-detail-header {
@@ -38,6 +51,7 @@
   }
 }
 
+
 .overLay-progressBar {
  @include overLay-progress;
 }
@@ -49,4 +63,8 @@
 
 .project-container .inner-progressBar {
   border: 3px solid white;
+}
+
+.descContent-owner{
+  padding: 8px 0 50px 4%;
 }

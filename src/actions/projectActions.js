@@ -19,3 +19,11 @@ export function getDetail(id){
     }
 }
 
+
+export function getNextProject(id){
+  const request = axios.get(`api/projectData/${id}`);
+    return {
+      type: type.GET_PROJECT_DETAIL,
+      payload: request
+    }
+}

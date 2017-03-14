@@ -35,9 +35,9 @@
     padding:8px;
     font-size: 16px;
     font-weight:400;
-    border: thin $lightGrey solid;
     height:40px;
     width:100px;
+    border: thin $lightGrey solid;
     border-radius:5px !important;
     color:grey;
     margin: 15px;
@@ -72,6 +72,17 @@
     width:100px;
     font-size: 16px;
     font-weight:400;
+    &:hover {
+      background-color:white;
+      padding:5px;
+      border: 1px $lightGrey solid !important;
+      border-radius:5px !important;
+      color:#F58408;
+    }
+    &:active {
+      background-color:#F58408;
+      color:white;
+    }
   }
 
 }

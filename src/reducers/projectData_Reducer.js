@@ -99,15 +99,9 @@ export function projectData_Reducer(state = {}, action) {
         });
 
       case type.SORT_BY_ACTIVE:
-        //First two if statement checks whether it is filtered by active/inactive.
-        //if it is filtered, it will simply return same data. Sorting will not work since all data are same.
-        const isAllActive = (element)=>{ return element; }
-        const isAllInactive = (element)=>{ return !element; }
-        if(state.projectData.every(isAllActive)) return state;
-        if(state.projectData.every(isAllInactive)) return state;
-
         let sortByActive;
         if(action.payload === 'desc'){
+          console.log('desc')
            sortByActive = state.projectData.sort( (a, b)=> b.active - a.active);
         } else {
            sortByActive = state.projectData.sort( (a, b)=> a.active - b.active);
