@@ -10,11 +10,6 @@
     }
   }
 
-.edit {
-  // border-radius: 2px;
-  // border: thin solid $lightGrey;
-}
-
 .project-detail-header {
   p:first-child {
     font-size:20px;
@@ -44,15 +39,14 @@
 }
 
 .overLay-progressBar {
-  background-color:#CDCDCD;
-  position:relative;
-  border-radius:7px;
-  float:left;
+ @include overLay-progress;
 }
 
 .inner-progressBar {
-  background-color:green;
-  position:absolute;
-  border-radius:7px;
-  border-right: 1px solid white;
+  @include linearColor();
+  @include innerLay-progress();
+}
+
+.project-container .inner-progressBar {
+  border: 3px solid white;
 }

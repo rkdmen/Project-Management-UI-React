@@ -57,23 +57,30 @@ table {
     left:0;
     width:20px;
     text-align:right;
+    @media #{$mq-xs, $mq-sm}{
+      display:none;
+    }
   }
 
   .totalStep-tr {
     float:right;
     right:0;
     text-align:right;
+    @media #{$mq-xs, $mq-sm}{
+      display:none;
+    }
   }
   .overLay-progressBar {
     height:17px;
     @media #{$mq-xs, $mq-sm}{
       height:13px;
-      width:60%;
+      width:100%;
     }
     width:75%;
   }
   .inner-progressBar {
     height:17px;
+    @include linearColor();
     @media #{$mq-xs, $mq-sm}{
       height:13px;
     }
