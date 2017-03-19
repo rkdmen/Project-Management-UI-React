@@ -11,16 +11,16 @@
     font-size:17px;
     }
 
-    p {
-      font-size:17px;
-      font-weight:400;
-      color:grey;
-    }
-    .owner-name {
-      color:$skyBlue;
-      font-size:16px;
-    }
+  p {
+    font-size:17px;
+    font-weight:400;
+    color:grey;
   }
+  .owner-name {
+    color:$skyBlue;
+    font-size:16px;
+  }
+}
 
 .project-detail-header {
   p:first-child {
@@ -49,16 +49,19 @@
     cursor: pointer;
   }
 }
+
 .left-arrow {
   position: fixed;
   top:40%;
   left:1%;
 }
+
 .right-arrow {
   position: fixed;
   top:40%;
   right:1%;
 }
+
 .overLay-progressBar {
  @include overLay-progress;
 }
